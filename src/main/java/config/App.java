@@ -1,5 +1,6 @@
 package config;
 
+import daos.BlogDao;
 import io.jsondb.JsonDBTemplate;
 import io.jsondb.crypto.DefaultAESCBCCipher;
 import io.jsondb.crypto.ICipher;
@@ -11,6 +12,12 @@ import models.Blog;
 
 public class App {
   public static void main(String[] args) {
+   BlogDao g = new BlogDao();
+   g.listar();
+   g.insertar();
+   g.listar();
+  }
+  public void demo(){
     String dbFilesLocation = "db/";
     String baseScanPackage = "model";
     ICipher cipher;
@@ -30,6 +37,5 @@ public class App {
         System.out.println(findAll);
     } catch (GeneralSecurityException ex) {
         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-    }
-  }    
-}
+    }}
+  }
