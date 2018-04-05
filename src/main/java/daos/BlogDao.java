@@ -3,7 +3,6 @@ package daos;
 import config.Database;
 import java.util.List;
 import models.Blog;
-import org.bson.types.ObjectId;
 
 public class BlogDao extends Database{
   public BlogDao() throws Exception {
@@ -29,6 +28,15 @@ public class BlogDao extends Database{
         Blog blog = (Blog)doc;
         System.out.println(blog);
       }
+    } catch (Exception ex) {
+      throw ex;
+    }
+  }
+  
+  public Blog obtener(String id) throws Exception{
+    try {
+      Object doc = this.jsonDBTemplate.findById(id, Blog.class);
+      return (Blog)doc;
     } catch (Exception ex) {
       throw ex;
     }
