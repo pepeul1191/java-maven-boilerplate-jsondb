@@ -10,4 +10,12 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.jsondb/jsondb-core -->
+        <dependency>
+          <groupId>io.jsondb</groupId>
+          <artifactId>jsondb-core</artifactId>
+          <version>1.0.36</version>
+        </dependency>
+    </dependencies>
 </project>
