@@ -4,6 +4,7 @@ import io.jsondb.JsonDBTemplate;
 import io.jsondb.crypto.DefaultAESCBCCipher;
 import io.jsondb.crypto.ICipher;
 import java.security.GeneralSecurityException;
+import org.bson.types.ObjectId;
 
 public class Database {
     protected JsonDBTemplate jsonDBTemplate;
@@ -17,5 +18,10 @@ public class Database {
 
     public JsonDBTemplate getJsonDBTemplate() {
         return jsonDBTemplate;
+    }
+    
+    protected String generateId(){
+      ObjectId id = new ObjectId();
+      return id.toString();
     }
 }

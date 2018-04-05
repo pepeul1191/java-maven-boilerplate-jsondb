@@ -3,6 +3,7 @@ package daos;
 import config.Database;
 import java.util.List;
 import models.Blog;
+import org.bson.types.ObjectId;
 
 public class BlogDao extends Database{
   public BlogDao() throws Exception {
@@ -11,15 +12,11 @@ public class BlogDao extends Database{
     }
   }
     
-  public void insertar(Blog instance) throws Exception{
+  public String insertar(Blog doc) throws Exception{
     try {
-      System.out.println("ANTES");
-      System.out.println(instance);
-      this.getJsonDBTemplate().upsert(instance);
-      //this.getJsonDBTemplate().save(instance, Blog.class);
-      System.out.println("DESPUES");
-      System.out.println(instance);
-      System.out.println("++++++++++++++++++++++++++++");
+      doc.setId(this.generateId());
+      this.getJsonDBTemplate().insert(doc);
+      return doc.getId();
     } catch (Exception ex) {
       throw ex;    
     }
@@ -27,8 +24,10 @@ public class BlogDao extends Database{
   
   public void listar() throws Exception{
     try {
-      List<Object> findAll = this.getJsonDBTemplate().findAll("blogs");
-      System.out.println(findAll);
+      List<Object> docs = this.getJsonDBTemplate().findAll("blogs");
+      for (Object doc : docs) {
+        System.out.println(doc);
+      }
     } catch (Exception ex) {
       throw ex;
     }

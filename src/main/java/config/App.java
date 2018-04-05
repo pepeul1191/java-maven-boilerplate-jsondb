@@ -10,8 +10,8 @@ public class App {
       instance.setPrivateKey("b87eb02f5dd7e5232d7b0fc30a5015e4");
       try {
         BlogDao g = new BlogDao();
-        g.listar();
-        g.insertar(instance);
+        String id = g.insertar(instance);
+        System.out.println("El id generado es : " + id);
         g.listar();
       } catch (Exception ex) {
         System.out.println(ex.toString());
