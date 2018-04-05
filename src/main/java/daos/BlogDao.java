@@ -26,7 +26,8 @@ public class BlogDao extends Database{
     try {
       List<Object> docs = this.getJsonDBTemplate().findAll("blogs");
       for (Object doc : docs) {
-        System.out.println(doc);
+        Blog blog = (Blog)doc;
+        System.out.println(blog);
       }
     } catch (Exception ex) {
       throw ex;
