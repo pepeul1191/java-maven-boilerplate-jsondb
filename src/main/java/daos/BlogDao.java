@@ -9,8 +9,7 @@ public class BlogDao extends Database{
     
   public void insertar(Blog instance) throws Exception{
     try {
-      Database db = new  Database();
-      db.getJsonDBTemplate().insert(instance);
+      this.getJsonDBTemplate().insert(instance);
     } catch (Exception ex) {
       throw ex;    
     }
@@ -18,8 +17,7 @@ public class BlogDao extends Database{
   
   public void listar() throws Exception{
     try {
-      Database db = new  Database();
-      List<Object> findAll = db.getJsonDBTemplate().findAll("blogs");
+      List<Object> findAll = this.getJsonDBTemplate().findAll("blogs");
       System.out.println(findAll);
     } catch (Exception ex) {
       throw ex;
