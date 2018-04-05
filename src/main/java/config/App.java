@@ -4,6 +4,7 @@ import io.jsondb.JsonDBTemplate;
 import io.jsondb.crypto.DefaultAESCBCCipher;
 import io.jsondb.crypto.ICipher;
 import java.security.GeneralSecurityException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Blog;
@@ -21,7 +22,12 @@ public class App {
         instance.setHostname("ec2-54-191-11");
         instance.setPrivateKey("b87eb02f5dd7e5232d7b0fc30a5015e4");
         //jsonDBTemplate.createCollection(Blog.class);
+        System.out.println("ANTES");
+        System.out.println(instance);
         jsonDBTemplate.insert(instance);
+        System.out.println("DESPUES");
+        List<Object> findAll = jsonDBTemplate.findAll("blogs");
+        System.out.println(findAll);
     } catch (GeneralSecurityException ex) {
         Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
     }
